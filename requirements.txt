@@ -2,6 +2,6 @@ streamlit
 pandas
 google-genai
 playwright
-fpdf
+fpdf2
 openpyxl
 xlsxwriter
