@@ -3,12 +3,16 @@ import pandas as pd
 import json
 import time
 import tempfile
-import os
+import os 
+import subprocess # <--- AGREGA ESTO SI NO ESTÁ
 from io import BytesIO
 from google import genai
 from playwright.sync_api import sync_playwright
-from fpdf import FPDF, XPos, YPos
+# ... resto de imports ...
 
+# === AGREGA ESTE BLOQUE JUSTO DEBAJO DE LOS IMPORTS ===
+# Esto instala el navegador automáticamente si no existe
+subprocess.run(["playwright", "install", "chromium"])
 # ==========================================
 # CONFIGURACIÓN DE LA PÁGINA
 # ==========================================
@@ -199,4 +203,5 @@ if uploaded_file:
             st.download_button("📊 Descargar Excel Consolidado", output.getvalue(), "Remates_Procesados.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
     except Exception as e:
+
         st.error(f"Error leyendo el archivo: {e}")
